@@ -9,7 +9,8 @@
 [gitHub 添加ssh密钥](https://docs.github.com/zh/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys)  
 [Bootstrap 官网](https://v3.bootcss.com/)  
 [GitHub：Building OAuth App](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)  
-[OkHttp 官网](https://square.github.io/okhttp/)
+[OkHttp 官网](https://square.github.io/okhttp/)  
+[H2快速入门](http://h2database.com/html/quickstart.html)
 
 ## 工具
 [git下载](https://gitforwindows.org/)
