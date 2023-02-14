@@ -10,7 +10,9 @@
 [Bootstrap 官网](https://v3.bootcss.com/)  
 [GitHub：Building OAuth App](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app)  
 [OkHttp 官网](https://square.github.io/okhttp/)  
-[H2快速入门](http://h2database.com/html/quickstart.html)
+[H2快速入门](http://h2database.com/html/quickstart.html)  
+[Spring boot Database](https://docs.spring.io/spring-boot/docs/current/reference/html/data.html#data.sql.datasource.configuration)  
+[Mybatis-spring boot](http://mybatis.org/spring-boot-starter/mybatis-spring-boot-autoconfigure/index.html)  
 
 ## 工具
 [git下载](https://gitforwindows.org/)
