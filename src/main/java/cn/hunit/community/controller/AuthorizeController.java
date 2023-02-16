@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.UUID;
 
 @Controller
 public class AuthorizeController {
@@ -25,6 +25,7 @@ public class AuthorizeController {
     private String redirectUri;
     @Autowired
     private GithubProvider githubProvider;
+    @Autowired
     private UserMapper userMapper;
 
     @GetMapping("/callback")
@@ -42,6 +43,11 @@ public class AuthorizeController {
         GithubUser githubUser = githubProvider.getUser(accessToken);
         if (githubUser != null){
             User user = new User();
+            user.setToken(UUID.randomUUID().toString());
+            user.setName(githubUser.getName());
+            user.setAccountId(String.valueOf(githubUser.getId()));
+            user.setGmtCreate(System.currentTimeMillis());
+            user.setGmtModified(user.getGmtCreate());
             userMapper.insert(user);
             request.getSession().setAttribute("user",githubUser);
             return "redirect:/";
