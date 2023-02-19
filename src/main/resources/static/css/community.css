@@ -1,10 +1,10 @@
 .body{
-    background-color: #efefef;
+    background: url("https://elasticsearch.cn/static/css/default/img/bg.jpg");
 }
 
 .main{
     background-color: white;
-    margin: 30px;
+    margin: 100px 120px;
 }
 
 .btn-publish{
