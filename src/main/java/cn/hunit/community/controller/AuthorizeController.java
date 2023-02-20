@@ -5,6 +5,7 @@ import cn.hunit.community.dto.GithubUser;
 import cn.hunit.community.mapper.UserMapper;
 import cn.hunit.community.model.User;
 import cn.hunit.community.provider.GithubProvider;
+import cn.hunit.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -28,12 +29,11 @@ public class AuthorizeController {
     @Autowired
     private GithubProvider githubProvider;
     @Autowired
-    private UserMapper userMapper;
+    private UserService userService;
 
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state,
-                           HttpServletRequest request,
                            HttpServletResponse response) {
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setClient_id(clientId);
@@ -44,22 +44,32 @@ public class AuthorizeController {
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUser = githubProvider.getUser(accessToken);
         //登录成功获取用户信息
-        if (githubUser != null){
+        if (githubUser != null && githubUser.getId() != null){
             User user = new User();
             //生成Token
             String token = UUID.randomUUID().toString();
             user.setToken(token);
             user.setName(githubUser.getName());
             user.setAccountId(String.valueOf(githubUser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(user.getGmtCreate());
             user.setAvatarUrl(githubUser.getAvatar_url());
-            userMapper.insert(user);
+            user.setBio(githubUser.getBio());
+            userService.createOrUpdate(user);
             response.addCookie(new Cookie("token",token));
             return "redirect:/";
         }else {
             //登录失败，重新登录
             return "redirect:/";
         }
+    }
+
+    @GetMapping("logout")
+    public String logout(HttpServletRequest request,
+                         HttpServletResponse response){
+        request.getSession().removeAttribute("user");
+        Cookie cookie = new Cookie("token",null);
+        response.addCookie(cookie);
+        cookie.setMaxAge(0);
+
+        return "redirect:/";
     }
 }

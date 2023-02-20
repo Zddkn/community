@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>研论网</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <script src="js/jquery-3.6.3.js"></script>
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="css/community.css">
   <link rel="stylesheet" href="css/picture.css">
   <link rel="stylesheet" href="css/text.css">
+  <script src="js/jquery-3.6.3.js"></script>
   <script src="js/bootstrap.min.js"></script>
 
 </head>
@@ -19,16 +19,22 @@
     <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
       <h2 class="text-bigfont "><span class="glyphicon glyphicon-th-list" aria-hidden="true"></span> 发现</h2>
       <hr>
-      <div class="media" th:each="question:${pagination.questions}">
+      <div class="media" th:each="question : ${pagination.questions}">
         <div class="media-left">
           <a href="#">
-            <img alt="头像" class="media-object small-picture img-rounded" th:src="${question.user.avatarUrl}">
+            <img class="media-object small-picture img-rounded" th:src="${question.user.avatarUrl}">
           </a>
         </div>
         <div class="media-body">
-          <h4 class="media-heading" th:text="${question.title}"></h4>
+          <h4 class="media-heading">
+            <a th:href="@{'/question/'+ ${question.id}}" th:text="${question.title}"></a>
+          </h4>
           <span th:text="${question.description}"></span><br>
-          <span class="text-color-999"><span th:text="${question.commentCount}"></span>个回复 · <span th:text="${question.viewCount}"></span>次浏览 · <span th:text="${#dates.format(question.gmtCreate,'YYYY-MM-dd HH:mm')}"></span></span>
+          <span class="text-color-999">
+            <span th:text="${question.commentCount}"></span>个回复 ·
+            <span th:text="${question.viewCount}"></span>次浏览 ·
+            <span th:text="${#dates.format(question.gmtCreate,'YYYY-MM-dd HH:mm')}"></span>
+          </span>
         </div>
       </div>
       <nav aria-label="Page navigation">
