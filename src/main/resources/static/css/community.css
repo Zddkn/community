@@ -12,3 +12,15 @@
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
+.jumbotron{
+    margin: 50px;
+}
+
+.background-color-eee{
+    background-color: #eee;
+}
+
+.background-color-white{
+    background-color: white;
+}
