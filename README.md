@@ -17,3 +17,7 @@
 
 ## 工具
 [git下载](https://gitforwindows.org/)
+
+# 脚本
+mvn flyway:migrate
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate

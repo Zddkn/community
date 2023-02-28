@@ -3,11 +3,11 @@
 <head>
   <title>研论网 - 发布</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <script src="/js/jquery-3.6.3.js"></script>
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="/css/community.css">
   <script src="/js/bootstrap.min.js"></script>
-  <script src="/js/jquery-3.6.3.js"></script>
 
 </head>
 <body class="body">
@@ -31,12 +31,12 @@
           <label for="tag">添加标签：</label>
           <input type="text" class="form-control" th:value="${tag}" id="tag" name="tag" placeholder="输入标签，以，隔开">
         </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <button type="submit" class=" btn btn-success btn-publish">发布</button>
+        </div>
         <div class="container-fluid main">
           <div class="row">
             <div class="alert alert-danger col-lg-9 col-md-12 col-sm-12 col-xs-12" th:text="${error}" th:if="${error != null}">用户未登录</div>
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <button type="submit" class=" btn btn-success btn-publish">发布</button>
-            </div>
           </div>
         </div>
       </form>

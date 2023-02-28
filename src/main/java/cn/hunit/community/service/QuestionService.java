@@ -4,6 +4,7 @@ import cn.hunit.community.dto.PaginationDTO;
 import cn.hunit.community.dto.QuestionDTO;
 import cn.hunit.community.exception.CustomizeErrorCode;
 import cn.hunit.community.exception.CustomizeException;
+import cn.hunit.community.mapper.QuestionExtMapper;
 import cn.hunit.community.mapper.QuestionMapper;
 import cn.hunit.community.mapper.UserMapper;
 import cn.hunit.community.model.Question;
@@ -23,6 +24,9 @@ public class QuestionService {
     private UserMapper userMapper;
     @Autowired(required = false)
     private QuestionMapper questionMapper;
+
+    @Autowired(required = false)
+    private QuestionExtMapper questionExtMapper;
 
     public PaginationDTO list(Integer page, Integer size) {
         PaginationDTO paginationDTO = new PaginationDTO();
@@ -59,7 +63,7 @@ public class QuestionService {
         return paginationDTO;
     }
 
-    public PaginationDTO list(Integer userId, Integer page, Integer size) {
+    public PaginationDTO list(Long userId, Integer page, Integer size) {
         PaginationDTO paginationDTO = new PaginationDTO();
         Integer totalPage;
         QuestionExample questionExample = new QuestionExample();
@@ -104,7 +108,7 @@ public class QuestionService {
 
     }
 
-    public QuestionDTO getById(Integer id) {
+    public QuestionDTO getById(Long id) {
         Question question = questionMapper.selectByPrimaryKey(id);
         if (question == null){
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUNT);
@@ -139,13 +143,10 @@ public class QuestionService {
         }
     }
 
-    public void incView(Integer id) {
-        Question question = questionMapper.selectByPrimaryKey(id);
-        Question updateQuestion = new Question();
-        updateQuestion.setViewCount(question.getViewCount() + 1);
-        QuestionExample questionExample = new QuestionExample();
-        questionExample.createCriteria()
-                .andIdEqualTo(id);
-        questionMapper.updateByExampleSelective(updateQuestion, questionExample);
+    public void incView(Long id) {
+        Question question = new Question();
+        question.setId(id);
+        question.setViewCount(1);
+        questionExtMapper.incView(question);
     }
 }

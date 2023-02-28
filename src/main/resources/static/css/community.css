@@ -1,26 +1,92 @@
-.body{
+.body {
     background: url("https://elasticsearch.cn/static/css/default/img/bg.jpg");
 }
 
-.main{
+.media-object {
+    width: 38px;
+    height: 38px;
+}
+
+.media-body {
+    padding-top: 10px;
+}
+
+.main {
     background-color: white;
     margin: 100px 120px;
+    padding: 10px 20px 0;
 }
 
-.btn-publish{
+.main-question{
+    background-color: white;
+    margin: 30px 120px 120px 120px;
+    padding: 10px 20px 0;
+}
+
+.hr-bottom{
+    margin-bottom: 0;
+}
+
+.question-details{
+    margin-bottom: 30px;
+}
+
+.question-edit{
+    margin-left: 15px;
+}
+
+.btn-publish {
     float: right;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 10px 0px;
 }
 
-.jumbotron{
+.btn-comment {
+    float: right;
+    margin-bottom: 10px;
+}
+.menu {
+    color: #999;
+}
+.menu .icon-comment{
+    font-size: 17px;
+    padding: 0 10px;
+    line-height: 2;
+    cursor: pointer;
+}
+
+.menu .icon-comment:hover{
+    color: #499ef3;
+}
+
+.jumbotron {
     margin: 50px;
 }
 
-.background-color-eee{
+.background-color-eee {
     background-color: #eee;
 }
 
-.background-color-white{
+.background-color-white {
     background-color: white;
+}
+
+.comment {
+    margin: 10px 0px;
+}
+
+.comment-sp{
+    margin-top: 0px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.comment-replies{
+    margin-bottom: 0px;
+    margin-top: 30px;
+}
+
+.comments{
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
 }
