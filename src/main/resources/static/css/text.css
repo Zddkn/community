@@ -8,5 +8,6 @@
 }
 
 .text-question{
+    word-break: break-all;
     padding: 0px 0px;
 }

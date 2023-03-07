@@ -17,44 +17,108 @@
     padding: 10px 20px 0;
 }
 
-.main-question{
+.main-question {
     background-color: white;
     margin: 30px 120px 120px 120px;
     padding: 10px 20px 0;
 }
 
-.hr-bottom{
+.hr-bottom {
+    margin-top: 5px;
     margin-bottom: 0;
 }
 
-.question-details{
+.hr-bottom-tag{
+    margin-bottom: 5px;
+}
+
+.hr-bottom-comment{
+    margin-top: 0;
+}
+
+.question-details {
     margin-bottom: 30px;
 }
 
-.question-edit{
-    margin-left: 15px;
+.question-edit {
+    padding-right: 5px;
+}
+
+.question-tag {
+    white-space: normal;
+    display: inline-block;
+    margin: 5px 2px 1px 5px;
+}
+
+.question-related{
+    list-style: none;
+    padding-left: 0;
+    font-size: 12px;
+    line-height: 160%;
+}
+
+.publish-tag-tab{
+    display: none;
+    margin-top: 5px;
+}
+
+.publish-tag-tab .label-info{
+    white-space: normal;
+    display: inline-block;
+    margin: 5px 2px 1px 5px;
+}
+
+.publish-alert{
+    padding: 10px 10px;
+    margin:10px 0;
+}
+
+.publish-btn{
+    margin: 10px 0;
+    padding: 10px 0 0 0;
 }
 
 .btn-publish {
     float: right;
-    margin: 10px 0px;
 }
 
 .btn-comment {
     float: right;
     margin-bottom: 10px;
 }
+
+.padding-0{
+    padding-right: 0;
+    padding-left: 0;
+}
+
 .menu {
     color: #999;
 }
-.menu .icon-comment{
+
+.menu .icon-comment {
     font-size: 17px;
     padding: 0 10px;
     line-height: 2;
     cursor: pointer;
 }
 
-.menu .icon-comment:hover{
+.menu .active {
+    color: #499ef3;
+}
+
+.menu .comment-icon {
+    font-size: 17px;
+    padding: 0 10px;
+    line-height: 2;
+    cursor: pointer;
+}
+
+.menu .comment-icon:hover {
+    color: #499ef3;
+}
+
+.menu .icon-comment:hover {
     color: #499ef3;
 }
 
@@ -74,19 +138,30 @@
     margin: 10px 0px;
 }
 
-.comment-sp{
+.comment-section{
+    padding: 0 0;
+}
+
+.comment-sp {
     margin-top: 0px;
     padding-left: 0;
     padding-right: 0;
 }
 
-.comment-replies{
+.comment-replies {
     margin-bottom: 0px;
     margin-top: 30px;
 }
 
-.comments{
-    padding-bottom: 5px;
+.comments {
+    padding: 0 0 5px;
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
+}
+
+.sub-comments {
+    padding-top: 15px;
+    margin: 15px 0;
+    border: 1px solid #eee;
+    border-radius: 10px;
 }

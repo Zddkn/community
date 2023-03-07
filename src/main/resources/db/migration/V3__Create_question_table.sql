@@ -6,7 +6,7 @@ CREATE TABLE question
     gmt_create BIGINT,
     gmt_modified BIGINT,
     creator INT,
-    Comment_count INT DEFAULT 0,
+    comment_count INT DEFAULT 0,
     view_count INT DEFAULT 0,
     like_count INT DEFAULT 0,
     tag VARCHAR(256)

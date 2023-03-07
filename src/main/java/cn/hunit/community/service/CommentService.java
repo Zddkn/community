@@ -4,10 +4,7 @@ import cn.hunit.community.Enums.CommentTypeEnum;
 import cn.hunit.community.dto.CommentDTO;
 import cn.hunit.community.exception.CustomizeErrorCode;
 import cn.hunit.community.exception.CustomizeException;
-import cn.hunit.community.mapper.CommentMapper;
-import cn.hunit.community.mapper.QuestionExtMapper;
-import cn.hunit.community.mapper.QuestionMapper;
-import cn.hunit.community.mapper.UserMapper;
+import cn.hunit.community.mapper.*;
 import cn.hunit.community.model.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +27,10 @@ public class CommentService {
     private QuestionExtMapper questionExtMapper;
     @Autowired(required = false)
     private UserMapper userMapper;
+    @Autowired(required = false)
+    private CommentExtMapper commentExtMapper;
+    @Autowired(required = false)
+    private NotificationMapper notificationMapper;
 
     @Transactional
     public void insert(Comment comment) {
@@ -48,11 +49,16 @@ public class CommentService {
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUNT);
             }
             commentMapper.insert(comment);
+            //增加二级评论数
+            Comment parentComment = new Comment();
+            parentComment.setId(comment.getParentId());
+            parentComment.setCommentCount(1);
+            commentExtMapper.incCommentCount(parentComment);
         } else {
             //回复问题
             Question question = questionMapper.selectByPrimaryKey(comment.getParentId());
             if (question == null){
-                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUNT);
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
             commentMapper.insert(comment);
             question.setCommentCount(1);
@@ -60,11 +66,11 @@ public class CommentService {
         }
     }
 
-    public List<CommentDTO> listByQuestionId(Long id) {
+    public List<CommentDTO> listByTargetId(Long id, CommentTypeEnum type) {
         CommentExample commentExample = new CommentExample();
         commentExample.createCriteria()
                         .andParentIdEqualTo(id)
-                                .andTypeEqualTo(CommentTypeEnum.QUESTION.getType());
+                                .andTypeEqualTo(type.getType());
         commentExample.setOrderByClause("gmt_create desc");
         List<Comment> comments = commentMapper.selectByExample(commentExample);
         if (comments.size() == 0){
