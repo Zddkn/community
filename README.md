@@ -53,4 +53,3 @@ mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
 
 ## 联系我
 ![](https://github.com/Zddkn/community/blob/master/src/main/resources/static/images/wechat.jpg)
-<img src:"https://github.com/Zddkn/community/blob/master/src/main/resources/static/images/wechat.jpg" width="200" />
