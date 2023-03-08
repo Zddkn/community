@@ -1,6 +1,27 @@
 ## 长大的柯南
 
-## 项目名 Community
+## 项目名：研论网
+
+## 功能列表
+开源论坛、问答系统，现有功能社交平台登录Github，提问、回复、通知、最新问答等功能。
+
+## 本地运行手册
+1. 安装必备工具  
+   JDK、Maven、MySQL
+2. 克隆代码到本地
+```sh
+git clone https://github.com/Zddkn/community.git
+````
+3. 运行数据库脚本，创建本地数据库
+```sh
+mvn flyway:migrate
+```
+4. 更改application.properties配置
+
+5. 访问项目
+```
+http://localhost:8887
+```
 
 ## 资料
 [Spring 指南](https://spring.io/guides)  
@@ -19,5 +40,15 @@
 [git下载](https://gitforwindows.org/)
 
 # 脚本
+1. 生成数据库的命令
+```
 mvn flyway:migrate
+```
+2. 生成 Model 等 MyBatis 配置文件的命令
+```
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+
+```
+
+## 联系我
+![](https://github.com/Zddkn/community/blob/master/src/main/resources/static/images/wechat.jpg)
