@@ -40,7 +40,7 @@ http://localhost:8887
 ## 工具
 [git下载](https://gitforwindows.org/)
 
-# 脚本
+## 脚本
 1. 生成数据库的命令
 ```
 mvn flyway:migrate
